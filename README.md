@@ -1,4 +1,4 @@
-<h1>FoxitPdfViewer<h1>
+<h1>FoxitPdfViewer</h1>
 
 <p>
 Sample UWP application for browsing pdf files in folder implemented using Foxit PDF for .NET SDK and Caliburn.Micro. 
