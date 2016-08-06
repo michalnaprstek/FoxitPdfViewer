@@ -243,6 +243,3 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-
-# Foxit SDK license file
-Assets/foxitLicense.json
