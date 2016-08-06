@@ -4,7 +4,7 @@
 Sample UWP application for browsing pdf files in folder implemented using Foxit PDF for .NET SDK and Caliburn.Micro. 
 </p>
 
-<h2>Prerequisities<h2>
+<h2>Prerequisities</h2>
 <ul>
 <li>Microsoft Windows 10.</li>
 <li>Microsoft Visual Studio 2015 (Update 3) installed.</li>
