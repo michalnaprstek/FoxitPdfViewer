@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Caliburn.Micro.Platform.UWP" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Caliburn.Micro.Platform.UWP">
+				<ResourceMapSubtree name="Properties">
+					<NamedResource name="Caliburn.Micro.Platform.UWP.rd.xml" uri="ms-resource://Caliburn.Micro.Platform.UWP/Files/Caliburn.Micro.Platform.UWP/Properties/Caliburn.Micro.Platform.UWP.rd.xml">
+						<Candidate type="Path">
+							<Value>Caliburn.Micro.Platform.UWP\Properties\Caliburn.Micro.Platform.UWP.rd.xml</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>
