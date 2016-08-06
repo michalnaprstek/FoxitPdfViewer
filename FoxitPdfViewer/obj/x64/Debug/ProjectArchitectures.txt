@@ -1,1 +1,0 @@
-c:\Users\Michal\Documents\Visual Studio 2015\Projects\OCode\FoxitPdfViewer\FoxitPdfViewer\FoxitPdfViewer.csproj;x64
