@@ -31,18 +31,21 @@ namespace FoxitPdfViewer.Views
     private void ViewPortImage_OnManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
     {
       var vm = this.DataContext as IMainViewModel;
-      if (vm != null)
+      if (vm == null)
+        return;
+
+      if (this.Scrollster.ZoomFactor > 1.0)
+        return;
+
+      if (e.Cumulative.Translation.X < 0)
       {
-        if (e.Cumulative.Translation.X < 0)
-        {
-          if (vm.CanNextPage)
-            vm.NextPage();
-        }
-        else if (e.Cumulative.Translation.X > 0)
-        {
-          if (vm.CanPreviousPage)
-            vm.PreviousPage();
-        }
+        if (vm.CanNextPage)
+          vm.NextPage();
+      }
+      else if (e.Cumulative.Translation.X > 0)
+      {
+        if (vm.CanPreviousPage)
+          vm.PreviousPage();
       }
     }
 
