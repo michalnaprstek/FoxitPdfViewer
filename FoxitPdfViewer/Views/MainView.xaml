@@ -117,11 +117,13 @@
         <ScrollViewer Grid.Row="1" 
                       x:Name="Scrollster" 
                       SizeChanged="Scrollster_OnSizeChanged"
-                      Style="{StaticResource ViewPortScrolViewerStyle}">
+                      Style="{StaticResource ViewPortScrolViewerStyle}"
+                      KeyUp="Scrollster_OnKeyUp">
           <Image  Source="{Binding CurrentPageBitmap}" 
                   Style="{StaticResource ViewPortImageStyle}"
                   Width="{Binding PageWidth}" 
-                  Height="{Binding PageHeight}">
+                  Height="{Binding PageHeight}"
+                  ManipulationCompleted="ViewPortImage_OnManipulationCompleted">
             <Image.RenderTransform>
               <MatrixTransform/>
             </Image.RenderTransform>
