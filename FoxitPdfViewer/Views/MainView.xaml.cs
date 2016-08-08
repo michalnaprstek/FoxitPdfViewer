@@ -1,4 +1,5 @@
 ﻿using Windows.System;
+using Windows.UI.Core;
 using Caliburn.Micro;
 using FoxitPdfViewer.Intefaces.Services;
 using FoxitPdfViewer.Intefaces.ViewModels;
@@ -18,6 +19,7 @@ namespace FoxitPdfViewer.Views
     public MainView()
     {
       this.InitializeComponent();
+      CoreWindow.GetForCurrentThread().KeyUp += OnKeyUp;
     }
 
     private void Scrollster_OnSizeChanged(object sender, SizeChangedEventArgs e)
@@ -49,7 +51,7 @@ namespace FoxitPdfViewer.Views
       }
     }
 
-    private void MainView_OnKeyUp(object sender, KeyRoutedEventArgs e)
+    private void OnKeyUp(CoreWindow sender, KeyEventArgs e)
     {
       if (e.Handled)
         return;
@@ -58,10 +60,12 @@ namespace FoxitPdfViewer.Views
       if (vm == null)
         return;
 
-      if (e.Key == VirtualKey.Right && vm.CanNextPage)
+      if (e.VirtualKey == VirtualKey.Right && vm.CanNextPage)
         vm.NextPage();
-      else if (e.Key == VirtualKey.Left && vm.CanPreviousPage)
+      else if (e.VirtualKey == VirtualKey.Left && vm.CanPreviousPage)
         vm.PreviousPage();
+
+      e.Handled = true;
 
     }
   }
