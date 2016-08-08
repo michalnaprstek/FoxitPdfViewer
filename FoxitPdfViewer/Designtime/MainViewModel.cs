@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 using FoxitPdfViewer.Intefaces.ViewModels;
@@ -109,6 +111,13 @@ namespace FoxitPdfViewer.Designtime
     /// List of documents can be displayed.
     /// </summary>
     public List<StorageFile> Files { get; set; }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+      this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
     #endregion
   }

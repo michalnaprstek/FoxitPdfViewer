@@ -18,6 +18,20 @@ namespace FoxitPdfViewer.Views
     public MainView()
     {
       this.InitializeComponent();
+      this.DataContextChanged += MainView_DataContextChanged;
+    }
+
+    private void MainView_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+    {
+      var vm = this.DataContext as IMainViewModel;
+      if (vm == null)
+        return;
+
+      vm.PropertyChanged += (o, eventArgs) =>
+      {
+        if (eventArgs.PropertyName == "CurrentPageBitmap" && this.Scrollster.ZoomFactor > 1)
+          this.Scrollster.ChangeView(0, 0, 1);
+      };
     }
 
     private void Scrollster_OnSizeChanged(object sender, SizeChangedEventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -7,7 +8,7 @@ namespace FoxitPdfViewer.Intefaces.ViewModels
   /// <summary>
   /// Interface for main view model.
   /// </summary>
-  public interface IMainViewModel
+  public interface IMainViewModel : INotifyPropertyChanged
   {
     /// <summary>
     /// Command method for selecting folder.
