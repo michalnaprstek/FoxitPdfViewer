@@ -7,7 +7,8 @@
     mc:Ignorable="d"
     xmlns:designTime="using:FoxitPdfViewer.Designtime"
     xmlns:micro="using:Caliburn.Micro"
-    d:DataContext="{designTime:MainViewModel}">
+    d:DataContext="{designTime:MainViewModel}"
+    KeyUp="MainView_OnKeyUp">
 
   <Page.Resources>
     <ResourceDictionary>

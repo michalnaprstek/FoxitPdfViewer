@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using Windows.System;
+using Caliburn.Micro;
 using FoxitPdfViewer.Intefaces.Services;
 using FoxitPdfViewer.Intefaces.ViewModels;
 using Windows.UI.Xaml;
@@ -43,6 +44,22 @@ namespace FoxitPdfViewer.Views
             vm.PreviousPage();
         }
       }
+    }
+
+    private void MainView_OnKeyUp(object sender, KeyRoutedEventArgs e)
+    {
+      if (e.Handled)
+        return;
+
+      var vm = this.DataContext as IMainViewModel;
+      if (vm == null)
+        return;
+
+      if (e.Key == VirtualKey.Right && vm.CanNextPage)
+        vm.NextPage();
+      else if (e.Key == VirtualKey.Left && vm.CanPreviousPage)
+        vm.PreviousPage();
+
     }
   }
 }
