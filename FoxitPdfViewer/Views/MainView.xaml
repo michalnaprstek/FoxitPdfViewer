@@ -117,8 +117,7 @@
         <ScrollViewer Grid.Row="1" 
                       x:Name="Scrollster" 
                       SizeChanged="Scrollster_OnSizeChanged"
-                      Style="{StaticResource ViewPortScrolViewerStyle}"
-                      KeyUp="Scrollster_OnKeyUp">
+                      Style="{StaticResource ViewPortScrolViewerStyle}">
           <Image  Source="{Binding CurrentPageBitmap}" 
                   Style="{StaticResource ViewPortImageStyle}"
                   Width="{Binding PageWidth}" 
