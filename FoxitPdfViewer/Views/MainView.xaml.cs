@@ -42,27 +42,6 @@ namespace FoxitPdfViewer.Views
       displayCalculationService.CurrentViewPortSize = e.NewSize;
     }
 
-    private void ViewPortImage_OnManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
-    {
-      var vm = this.DataContext as IMainViewModel;
-      if (vm == null)
-        return;
-
-      if (this.Scrollster.ZoomFactor > 1.0)
-        return;
-
-      if (e.Cumulative.Translation.X < 0)
-      {
-        if (vm.CanNextPage)
-          vm.NextPage();
-      }
-      else if (e.Cumulative.Translation.X > 0)
-      {
-        if (vm.CanPreviousPage)
-          vm.PreviousPage();
-      }
-    }
-
     private void MainView_OnKeyUp(object sender, KeyRoutedEventArgs e)
     {
       if (e.Handled)

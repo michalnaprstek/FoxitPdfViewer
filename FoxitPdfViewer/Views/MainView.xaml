@@ -6,8 +6,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:designTime="using:FoxitPdfViewer.Designtime"
+    xmlns:behaviors="using:FoxitPdfViewer.Behaviors"
     xmlns:micro="using:Caliburn.Micro"
     d:DataContext="{designTime:MainViewModel}"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     KeyUp="MainView_OnKeyUp">
 
   <Page.Resources>
@@ -122,11 +124,14 @@
           <Image  Source="{Binding CurrentPageBitmap}" 
                   Style="{StaticResource ViewPortImageStyle}"
                   Width="{Binding PageWidth}" 
-                  Height="{Binding PageHeight}"
-                  ManipulationCompleted="ViewPortImage_OnManipulationCompleted">
+                  Height="{Binding PageHeight}">
             <Image.RenderTransform>
               <MatrixTransform/>
             </Image.RenderTransform>
+            <interactivity:Interaction.Behaviors>
+              <behaviors:LeftSwipeMethodActionBehavior MethodName="NextPage"/>
+              <behaviors:RightSwipeMethodActionBehavior MethodName="PreviousPage"/>
+            </interactivity:Interaction.Behaviors>
           </Image>
         </ScrollViewer>
       </Grid>
