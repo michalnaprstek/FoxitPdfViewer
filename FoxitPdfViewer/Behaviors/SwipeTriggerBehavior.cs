@@ -1,55 +1,14 @@
 ﻿using Microsoft.Xaml.Interactivity;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
-using Caliburn.Micro;
 
 namespace FoxitPdfViewer.Behaviors
 {
   /// <summary>
   /// Triggers action method when swipe gesture is performed.
   /// </summary>
-  public abstract class SwipeMethodActionBehavior : Behavior<UIElement>
+  public abstract class SwipeTriggerBehavior : Trigger<UIElement>
   {
-
-    #region Dependency properties definition
-
-    public static readonly DependencyProperty CanExecuteProperty = DependencyProperty.Register(
-        "CanExecute",
-        typeof(bool),
-        typeof(SwipeMethodActionBehavior),
-        new PropertyMetadata(true)
-      );
-
-    public static readonly DependencyProperty MethodNameProperty = DependencyProperty.Register(
-      "MethodName",
-      typeof(string),
-      typeof(SwipeMethodActionBehavior),
-      new PropertyMetadata(null)
-      );
-
-    #endregion Dependency properties definition
-
-    #region Public properties
-
-    /// <summary>
-    /// Enables/Disables execution of <see cref="Actions"/> on swipe.
-    /// </summary>
-    public bool CanExecute
-    {
-      get { return (bool)GetValue(CanExecuteProperty); }
-      set { SetValue(CanExecuteProperty, value); }
-    }
-
-    /// <summary>
-    /// Name of the method should be called on gesture.
-    /// </summary>
-    public string MethodName
-    {
-      get { return (string) GetValue(MethodNameProperty); }
-      set { SetValue(MethodNameProperty, value); }
-    }
-
-    #endregion Public properties
 
     #region Overrides of Behavior<UIElement>
 
@@ -86,19 +45,14 @@ namespace FoxitPdfViewer.Behaviors
     /// </summary>
     private void AssociatedObject_ManipulationCompleted(object sender, Windows.UI.Xaml.Input.ManipulationCompletedRoutedEventArgs e)
     {
-      if (!this.CanExecute || this.MethodName == null)
+      if (!this.CanExecute || this.Actions == null)
         return;
 
       if (this.IsTheRightDirection(e.Cumulative))
       {
-        Interaction.ExecuteActions(sender, this.Actions, null);
+        this.ExecuteActions(sender);
       }
     }
-
-    /// <summary>
-    /// Helper for build <see cref="ActionCollection"/> with one <see cref="ActionMessage"/> using <see cref="MethodName"/>.
-    /// </summary>
-    private ActionCollection Actions => new ActionCollection {new ActionMessage {MethodName = this.MethodName}};
 
     /// <summary>
     /// Methods decides if direction of swipe has the right way to fire the action.

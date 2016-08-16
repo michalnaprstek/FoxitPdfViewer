@@ -97,9 +97,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Behaviors\LeftSwipeMethodActionBehavior.cs" />
-    <Compile Include="Behaviors\RightSwipeMethodActionBehavior.cs" />
-    <Compile Include="Behaviors\SwipeMethodActionBehavior.cs" />
+    <Compile Include="Behaviors\KeyUpTriggerBehavior.cs" />
+    <Compile Include="Behaviors\LeftSwipeTriggerBehavior.cs" />
+    <Compile Include="Behaviors\RightSwipeTriggerBehavior.cs" />
+    <Compile Include="Behaviors\SwipeTriggerBehavior.cs" />
+    <Compile Include="Behaviors\Trigger.cs" />
+    <Compile Include="Behaviors\TriggerOfT.cs" />
     <Compile Include="Designtime\MainViewModel.cs" />
     <Compile Include="Intefaces\Services\IDisplayCalculationService.cs" />
     <Compile Include="Intefaces\Services\IErrorHandlingService.cs" />

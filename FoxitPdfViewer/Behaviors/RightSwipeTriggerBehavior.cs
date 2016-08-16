@@ -5,7 +5,7 @@ namespace FoxitPdfViewer.Behaviors
   /// <summary>
   /// Handles right swipe gesture.
   /// </summary>
-  public class RightSwipeMethodActionBehavior : SwipeMethodActionBehavior
+  public class RightSwipeTriggerBehavior : SwipeTriggerBehavior
   {
     #region Overrides of SwipeActionBehavior
 

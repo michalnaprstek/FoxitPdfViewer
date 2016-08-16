@@ -1,10 +1,8 @@
-﻿using Windows.System;
+﻿using System.ComponentModel;
 using Caliburn.Micro;
 using FoxitPdfViewer.Intefaces.Services;
-using FoxitPdfViewer.Intefaces.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,7 +21,7 @@ namespace FoxitPdfViewer.Views
 
     private void MainView_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
     {
-      var vm = this.DataContext as IMainViewModel;
+      var vm = this.DataContext as INotifyPropertyChanged;
       if (vm == null)
         return;
 
@@ -40,22 +38,6 @@ namespace FoxitPdfViewer.Views
         (IDisplayCalculationService) IoC.GetInstance(typeof (IDisplayCalculationService), "IDisplayCalculationService");
 
       displayCalculationService.CurrentViewPortSize = e.NewSize;
-    }
-
-    private void MainView_OnKeyUp(object sender, KeyRoutedEventArgs e)
-    {
-      if (e.Handled)
-        return;
-
-      var vm = this.DataContext as IMainViewModel;
-      if (vm == null)
-        return;
-
-      if (e.Key == VirtualKey.Right && vm.CanNextPage)
-        vm.NextPage();
-      else if (e.Key == VirtualKey.Left && vm.CanPreviousPage)
-        vm.PreviousPage();
-
     }
   }
 }

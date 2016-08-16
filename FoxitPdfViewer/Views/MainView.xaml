@@ -9,8 +9,7 @@
     xmlns:behaviors="using:FoxitPdfViewer.Behaviors"
     xmlns:micro="using:Caliburn.Micro"
     d:DataContext="{designTime:MainViewModel}"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    KeyUp="MainView_OnKeyUp">
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity">
 
   <Page.Resources>
     <ResourceDictionary>
@@ -29,6 +28,19 @@
 
   </Page.Resources>
 
+  <interactivity:Interaction.Behaviors>
+    <behaviors:KeyUpTriggerBehavior Key="Right">
+      <behaviors:KeyUpTriggerBehavior.Actions>
+        <micro:ActionMessage MethodName="NextPage"></micro:ActionMessage>
+      </behaviors:KeyUpTriggerBehavior.Actions>
+    </behaviors:KeyUpTriggerBehavior>
+    <behaviors:KeyUpTriggerBehavior Key="Left">
+      <behaviors:KeyUpTriggerBehavior.Actions>
+        <micro:ActionMessage MethodName="PreviousPage"></micro:ActionMessage>
+      </behaviors:KeyUpTriggerBehavior.Actions>
+    </behaviors:KeyUpTriggerBehavior>
+  </interactivity:Interaction.Behaviors>
+  
   <SplitView IsPaneOpen="{Binding IsPaneOpen}">
     <SplitView.Pane>
       
@@ -129,8 +141,17 @@
               <MatrixTransform/>
             </Image.RenderTransform>
             <interactivity:Interaction.Behaviors>
-              <behaviors:LeftSwipeMethodActionBehavior MethodName="NextPage"/>
-              <behaviors:RightSwipeMethodActionBehavior MethodName="PreviousPage"/>
+              <behaviors:LeftSwipeTriggerBehavior>
+                <behaviors:LeftSwipeTriggerBehavior.Actions>
+                  <micro:ActionMessage MethodName="NextPage"></micro:ActionMessage>
+                </behaviors:LeftSwipeTriggerBehavior.Actions>
+              </behaviors:LeftSwipeTriggerBehavior>
+
+              <behaviors:RightSwipeTriggerBehavior>
+                <behaviors:RightSwipeTriggerBehavior.Actions>
+                  <micro:ActionMessage MethodName="PreviousPage"></micro:ActionMessage>
+                </behaviors:RightSwipeTriggerBehavior.Actions>
+              </behaviors:RightSwipeTriggerBehavior>
             </interactivity:Interaction.Behaviors>
           </Image>
         </ScrollViewer>
