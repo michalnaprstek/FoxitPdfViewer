@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.Foundation;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 using FoxitPdfViewer.Intefaces.ViewModels;

@@ -7,9 +7,11 @@
     mc:Ignorable="d"
     xmlns:designTime="using:FoxitPdfViewer.Designtime"
     xmlns:behaviors="using:FoxitPdfViewer.Behaviors"
+    xmlns:actions="using:FoxitPdfViewer.Actions"
     xmlns:micro="using:Caliburn.Micro"
     d:DataContext="{designTime:MainViewModel}"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity">
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core">
 
   <Page.Resources>
     <ResourceDictionary>
@@ -133,6 +135,11 @@
                       x:Name="Scrollster" 
                       SizeChanged="Scrollster_OnSizeChanged"
                       Style="{StaticResource ViewPortScrolViewerStyle}">
+          <interactivity:Interaction.Behaviors>
+            <core:DataTriggerBehavior Binding="{Binding Path=CurrentPageNumber}" ComparisonCondition="NotEqual" Value="-1">
+              <actions:ScrollViewerResetZoomAction ScrollViewer="{Binding ElementName=Scrollster}"/>
+            </core:DataTriggerBehavior>
+          </interactivity:Interaction.Behaviors>
           <Image  Source="{Binding CurrentPageBitmap}" 
                   Style="{StaticResource ViewPortImageStyle}"
                   Width="{Binding PageWidth}" 

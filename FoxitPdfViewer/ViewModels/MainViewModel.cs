@@ -267,7 +267,7 @@ namespace FoxitPdfViewer.ViewModels
         this.OnPropertyChanged(new PropertyChangedEventArgs(nameof(this.Files)));
       }
     }
-
+    
     #endregion public members
 
     #region private methods
@@ -311,16 +311,6 @@ namespace FoxitPdfViewer.ViewModels
     {
       this.NotifyOfPropertyChange(() => this.CanNextPage);
       this.NotifyOfPropertyChange(() => this.CanPreviousPage);
-    }
-
-    private async Task<StorageFile> PickFile()
-    {
-      var picker = new FileOpenPicker();
-      picker.ViewMode = PickerViewMode.Thumbnail;
-      picker.SuggestedStartLocation =
-        PickerLocationId.DocumentsLibrary;
-      picker.FileTypeFilter.Add(".pdf");
-      return await picker.PickSingleFileAsync();
     }
 
     private async Task<Page> LoadCurrentPage()
